@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page with Special Effects</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Poppins', sans-serif;
+        background: #ececec;
+    }
+
+    .background-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+    }
+
+    .bus {
+        width: 200px;
+        height: 100px;
+        background: url('bus.png') no-repeat center;
+        background-size: contain;
+        position: absolute;
+        animation: moveBus 10s linear infinite;
+    }
+
+    @keyframes moveBus {
+        0% {
+            left: -200px;
+        }
+        50% {
+            left: calc(100% + 200px);
+        }
+        100% {
+            left: -200px;
+        }
+    }
+
+    .login-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .login-container h1 {
+        font-family: 'Pacifico', cursive;
+        color: #ff6347;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+    }
+
+    .login-container label {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        margin: 15px 0 5px;
+        font-weight: 600;
+    }
+
+    .login-container input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-family: 'Poppins', sans-serif;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container input:focus {
+        border-color: #ff6347;
+        box-shadow: 0 0 8px rgba(255, 99, 71, 0.5);
+        outline: none;
+    }
+
+    .login-container button {
+        width: 100%;
+        padding: 15px;
+        background: #ff6347;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.3s;
+    }
+
+    .login-container button:hover {
+        background: #e5533c;
+        transform: scale(1.05);
+    }
+</style>
+<body>
+    <div class="background-container">
+        <div class="bus"></div>
+    </div>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

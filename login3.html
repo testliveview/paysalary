@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Nakshtra</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+   
+  <style>
+          body {
+  background-image: url('C:/Users/DELL/Downloads/background.webp'); /* Use forward slashes */
+  color: #ffffff;
+  overflow: hidden;
+  background-size: cover; /* Optional: ensures the background covers the whole body */
+  background-repeat: no-repeat; /* Optional: prevents the background from repeating */
+  background-position: center; /* Optional: centers the background image */
+}
+
+
+          .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+          }
+
+          .login-form {
+            background-color: rgb(239 236 236 / 97%);
+          padding: 40px;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          animation: fadeIn 1s ease-out;
+          max-width: 400px;
+          width: 100%;
+          position: relative;
+          z-index: 1;
+          }
+          .login-container:before {
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: rgb(15 13 28 / 70%);
+          z-index: 1;
+      }
+
+          .login-form img {
+            max-width: 155px; /* Adjust the max-width as needed */
+            border-radius: 70%;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+          }
+          .form-control:focus {
+          color: #495057;
+          background-color: transparent;
+          border-color: #80bdff;
+          outline: none;
+          box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 0%)  !important;
+          border-bottom: 2px solid #f47145 !important;
+      }
+      .form-control::placeholder {
+        color: #fff;
+      }
+
+      .form-control::-ms-input-placeholder { /* Edge 12 -18 */
+        color: #fff;
+      }
+          .login-heading {
+            font-size: 36px;
+          margin-bottom: 20px;
+          color: #ffff;
+          font-family: Tahoma;
+          position: relative;
+          z-index: 10;
+          font-weight: 700;
+          }
+
+          .form-group {
+            margin-bottom: 20px;
+            position: relative;
+          }
+
+          .form-group input {
+            border: none;
+            border-bottom: 2px solid #ff8c00;
+            padding: 10px;
+            width: 100%;
+            color: #050505 !important;
+            background-color: transparent;
+            transition: all 0.3s;
+            font-size: 16px;
+          }
+
+          .form-group label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #ff8c00;
+            font-size: 16px;
+            transition: all 0.3s;
+            pointer-events: none;
+          }
+
+          .form-group input:focus + label,
+          .form-group input:not(:placeholder-shown) + label {
+            top: -20px;
+            left: 5px;
+            font-size: 14px;
+            color: #ff6b00;
+          }
+
+          .form-group input:focus {
+            border-color: transparent;
+          }
+
+          .form-group input:focus::placeholder,
+          .form-group input:not(:placeholder-shown)::placeholder {
+            color: #ffffff;
+          }
+
+          .btn-primary {
+            background-color: #ff8c00;
+            border-color: #ff8c00;
+            border-radius: 20px;
+            transition: all 0.3s;
+            font-size: 18px;
+          }
+
+          .btn-primary:hover {
+            background-color: #ff6b00;
+            border-color: #ff6b00;
+          }
+          
+      .eye-icon,
+.eye-cross-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  color: #6c757d;
+}
+
+.eye-icon::before {
+  content: '\1F441\200D\1F5E8';
+}
+
+.eye-cross-icon::before {
+  content: '\1F441'; /* This adds the eye with slash */
+  display: none;
+}
+
+#inputPassword[type="password"] ~ .eye-icon.show::before {
+  display: inline-block;
+}
+
+#inputPassword[type="password"] ~ .eye-cross-icon.hide::before {
+  display: none;
+}
+
+#inputPassword[type="text"] ~ .eye-icon.show::before {
+  display: none;
+}
+
+#inputPassword[type="text"] ~ .eye-cross-icon.hide::before {
+  display: inline-block;
+}
+
+
+
+          span.error {
+            color: darkorange;
+/*            position: relative;*/
+             margin-right: 71px; 
+           /* padding: 10px;
+            right: 51px;*/
+            color: red;
+             }
+
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(-20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+
+          }
+
+  </style>
+</head>
+<body>
+
+<div class="container login-container">
+  <h4 class="login-heading">Rajasthan State Road Transport Corporation</h4>
+  <div class="login-form text-center">
+    <div class="form-group">
+      <img src="C:\Users\DELL\Downloads/rsrtc-logo.png" alt="Logo" class="img-fluid">
+    </div>
+    <form action="{{ route('superadmin1') }}" method="post">
+     
+      <div class="form-group">
+        <input type="email" name="email" value="" class="form-control" id="inputEmail" placeholder=" " >
+        <label for="inputEmail">Email address</label>
+       
+      </div>
+           <!-- Inside the form-group for password -->
+        <div class="form-group">
+          <input type="password" name="password" class="form-control" id="inputPassword" placeholder=" " >
+          <label for="inputPassword">Password</label>
+          <span class="eye-icon show" onclick="togglePasswordVisibility(this)"></span>
+          <span class="eye-cross-icon hide" onclick="togglePasswordVisibility(this)"></span>
+          
+        </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Add this script at the end of the body tag -->
+<!-- Add this script at the end of the body tag -->
+<script>
+  function togglePasswordVisibility(icon) {
+    const passwordInput = document.getElementById('inputPassword');
+    const eyeIcon = icon.classList.contains('eye-icon');
+    const eyeCrossIcon = icon.classList.contains('eye-cross-icon');
+
+    if (eyeIcon) {
+      icon.style.display = 'none';
+      icon.nextElementSibling.style.display = 'inline-block';
+      passwordInput.setAttribute('type', 'text');
+    } else if (eyeCrossIcon) {
+      icon.style.display = 'none';
+      icon.previousElementSibling.style.display = 'inline-block';
+      passwordInput.setAttribute('type', 'password');
+    }
+  }
+</script>
+
+
+
+</body>
+</html>
